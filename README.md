@@ -24,7 +24,7 @@ This e-commerce project is a full-featured web application built with **Spring B
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:alpha9centauri/spring-ecommerce-project.git
    cd spring-ecommerce-project
    ```
 
