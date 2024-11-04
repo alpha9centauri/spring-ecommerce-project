@@ -48,6 +48,59 @@ This e-commerce project is a full-featured web application built with **Spring B
 
 This e-commerce application demonstrates real-world skills in full-stack development, integrating Spring Boot with various enterprise-level components to create a fully-functional e-commerce platform.
 
+---
+
+### Entity-Relationship Mapping (ERD)
+
+#### 1. **User**
+   - **Attributes**: `userId`, `username`, `email`, `password`, `createdDate`, `role`
+   - **Relationships**:
+     - **One-to-Many** with **Address**: A user can have multiple addresses.
+     - **One-to-One** with **Cart**: Each user has a unique cart.
+     - **One-to-Many** with **Order**: A user can place multiple orders.
+
+#### 2. **Address**
+   - **Attributes**: `addressId`, `street`, `city`, `state`, `zipCode`, `country`, `userId`
+   - **Relationships**:
+     - **Many-to-One** with **User**: Each address belongs to a user.
+     - **One-to-Many** with **Order**: An address can be associated with multiple orders (e.g., in historical orders).
+
+#### 3. **Product**
+   - **Attributes**: `productId`, `name`, `description`, `price`, `stock`, `imageUrl`, `categoryId`
+   - **Relationships**:
+     - **Many-to-One** with **Category**: Each product belongs to a single category.
+     - **Many-to-Many** with **Cart**: Products can be in multiple carts.
+     - **Many-to-Many** with **Order**: Products can be in multiple orders.
+
+#### 4. **Category**
+   - **Attributes**: `categoryId`, `name`, `description`
+   - **Relationships**:
+     - **One-to-Many** with **Product**: A category can contain multiple products.
+
+#### 5. **Cart**
+   - **Attributes**: `cartId`, `userId`
+   - **Relationships**:
+     - **One-to-One** with **User**: Each cart belongs to a single user.
+     - **Many-to-Many** with **Product**: A cart can have multiple products with associated quantities.
+     
+   - **Linking Table for Cart-Product**: 
+     - **Attributes**: `cartId`, `productId`, `quantity`
+
+#### 6. **Order**
+   - **Attributes**: `orderId`, `orderDate`, `status`, `totalAmount`, `userId`, `addressId`
+   - **Relationships**:
+     - **Many-to-One** with **User**: Each order is placed by a user.
+     - **Many-to-One** with **Address**: Each order is shipped to a single address.
+     - **Many-to-Many** with **Product**: An order can contain multiple products.
+
+   - **Linking Table for Order-Product**:
+     - **Attributes**: `orderId`, `productId`, `quantity`, `priceAtPurchase`
+
+### Summary of Relationships
+- **One-to-Many**: `User` ➔ `Address`, `User` ➔ `Order`, `Category` ➔ `Product`
+- **One-to-One**: `User` ➔ `Cart`
+- **Many-to-Many**: `Cart` ➔ `Product`, `Order` ➔ `Product`
+
 
 
 ## API Documentation
