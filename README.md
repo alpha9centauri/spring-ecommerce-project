@@ -25,7 +25,7 @@ This e-commerce project is a full-featured web application built with **Spring B
 1. **Clone the Repository**:
    ```bash
    git clone <repository-url>
-   cd ecomproj
+   cd spring-ecommerce-project
    ```
 
 2. **Build and Run**:
